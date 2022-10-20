@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<idinfo>
+		<citation>
+			<citeinfo>
+				<origin>U.S. Department of Interior, Bureau of Land Management (BLM)</origin>
+				<title>BLM National Administrative Unit Boundary Polygons and Office Points - National Geospatial Data Asset (NGDA)</title>
+				<geoform>vector digital data</geoform>
+				<othercit>This is an aggregate national dataset. Source data were received from all or some of the BLM state offices of Alaska, Arizona, California,
+Colorado, Eastern States, Idaho, Montana, Nevada, New Mexico, Oregon/Washington, Utah, and Wyoming.</othercit>
+				<onlink>https://gis.blm.gov/EGISDownload/LayerPackages/BLM_National_Administrative_Units.zip</onlink>
+				<pubdate>20220425</pubdate>
+				<pubinfo>
+					<publish>Bureau of Land Management</publish>
+				</pubinfo>
+			</citeinfo>
+		</citation>
+		<descript>
+			<abstract>Feature level Dataset for the BLM Administrative Unit Boundaries Data Standard. This feature dataset includes both BLM administrative land areas and office locations. Land areas are depicted with polygons for the smallest administrative unit (field offices). Larger administrative units, such as district offices, and administrative states may be derived from these polygons. Office locations at each level are depicted with points.
+
+This dataset is a subset of the official national dataset, containing features and attributes intended for public release and has been optimized for online map service performance. The Implementation Guide represents the official national dataset from which this dataset was derived. </abstract>
+			<purpose>This dataset captures and establishes the geographic areas in which the organizational units of the BLM have distinct jurisdictional responsibility for land and resource management activities occurring on the public lands, the maintained rights of the United States (i.e. mineral estate) and actions relating to the Trust responsibilities of the U.S. Government as stipulated in Law or Treaty.  Particularly, this data pertains to the following BLM groups and their purposes: BLM State, District, and Field Office Personnel; most programs and national applications within the BLM; other agencies and the public.</purpose>
+			<supplinf>A published revision of the Department Manual’s Part 305: Departmental Science Effects, Chapter 3: Integrity of Scientific and Scholarly Activities (305 DM 3), effective December 16, 2014, is available online at http://elips.doi.gov/ELIPS/DocView.aspx?id=4056. Scholarly information considered in Departmental decision making must be robust, of the highest quality, and the result of as rigorous scientific and scholarly processes as can be achieved. Most importantly, it must be trustworthy. This policy helps us to achieve that standard (http://www.doi.gov/scientificintegrity/index.cfm).
+
+Each state office has a Data Steward or Contact Person for this data. Please contact the specific state office for additional information on their state dataset.</supplinf>
+		</descript>
+		<status>
+			<progress>Complete</progress>
+			<update>As needed</update>
+		</status>
+		<spdom>
+			<bounding>
+				<westbc>-124.860828</westbc>
+				<eastbc>-66.885070</eastbc>
+				<northbc>49.384356</northbc>
+				<southbc>24.396305</southbc>
+			</bounding>
+		</spdom>
+		<keywords>
+			<place>
+				<placekt>BLM-STATE</placekt>
+				<placekey>Oregon</placekey>
+				<placekey>Montana</placekey>
+				<placekey>Utah</placekey>
+				<placekey>Nevada</placekey>
+				<placekey>Wyoming</placekey>
+				<placekey>Arizona</placekey>
+				<placekey>California</placekey>
+				<placekey>Idaho</placekey>
+				<placekey>Alaska</placekey>
+				<placekey>New Mexico</placekey>
+				<placekey>Colorado</placekey>
+			</place>
+			<theme>
+				<themekey>boundaries</themekey>
+				<themekey>location</themekey>
+				<themekt>ISO 19115 Topic Category</themekt>
+				<themekey>planningCadastre</themekey>
+			</theme>
+			<theme>
+				<themekt>BLM-THEME</themekt>
+				<themekey>Management</themekey>
+				<themekey>Geospatial</themekey>
+			</theme>
+			<theme>
+				<themekey>Administrative Units</themekey>
+				<themekey>Public Lands</themekey>
+				<themekey>Management</themekey>
+				<themekey>Bureau of Land Management</themekey>
+				<themekey>BLM</themekey>
+				<themekey>Jurisdiction</themekey>
+				<themekt>None</themekt>
+			</theme>
+			<place>
+				<placekey>Western States</placekey>
+				<placekey>Eastern States</placekey>
+				<placekey>United States</placekey>
+				<placekt>None</placekt>
+			</place>
+			<theme>
+				<themekey>Governmental Units and Administrative and Statistical Boundaries Theme</themekey>
+				<themekey>NGDA</themekey>
+				<themekey>National Geospatial Data Asset</themekey>
+				<themekt>NGDA Portfolio Themes</themekt>
+			</theme>
+		</keywords>
+		<accconst>None, these data are considered public domain</accconst>
+		<useconst>These data are provided by Bureau of Land Management (BLM) “as is” and might contain errors or omissions. The User assumes the entire risk associated with its use of these data and bears all responsibility in determining whether these data are fit for the User’s intended use. The information contained in these data is dynamic and may change over time. The data are not better than the sources from which they were derived, and both scale and accuracy may vary across the data set. These data might not have the accuracy, resolution, completeness, timeliness, or other characteristics appropriate for applications that potential users of the data may contemplate. The User is encouraged to carefully consider the content of the metadata file associated with these data. These data are neither legal documents nor land surveys, and must not be used as such. Official records may be referenced at most BLM offices. Please report any errors in the data to the BLM office from which it was obtained. The BLM should be cited as the data source in any products derived from these data. Any Users wishing to modify the data should describe the types of modifications they have performed. The User should not misrepresent the data, nor imply that changes made were approved or endorsed by BLM. This data may be updated by the BLM without notification.</useconst>
+		<ptcontac>
+			<cntinfo>
+				<cntpos>National Data Steward</cntpos>
+				<cntaddr>
+					<addrtype>physical address</addrtype>
+					<address>1220 South West 3rd Avenue P.O. Box 2965</address>
+					<city>Portland</city>
+					<state>OR</state>
+					<postal>97204-2818</postal>
+					<country>United States</country>
+				</cntaddr>
+				<cntvoice>(503) 808-6240</cntvoice>
+				<cntemail>vmyers@blm.gov</cntemail>
+				<cntperp>
+					<cntper>National Data Steward</cntper>
+					<cntorg>Bureau of Land Management, WO830</cntorg>
+				</cntperp>
+			</cntinfo>
+		</ptcontac>
+		<timeperd>
+			<timeinfo>
+				<sngdate>
+					<caldate>Publication Date</caldate>
+				</sngdate>
+			</timeinfo>
+			<current>publication date</current>
+		</timeperd>
+		<datacred>BLM Admin State</datacred>
+		<secinfo>
+			<secclass>Unclassified</secclass>
+		</secinfo>
+		<native>Esri ArcGIS 10.1.1.3143</native>
+	</idinfo>
+	<dataqual>
+		<logic>This national dataset is an aggregation from multiple datasets provided by the BLM Administrative States, please contact the distributor for additional information on provenance, history, accuracy and quality of the data. The logical consistency of this dataset reflects that of the source datasets. Each source dataset is run through a series of tests to verify that the data complies with the format specified in the Data Standard. ERRORS AND INCONSISTENCIES MAY STILL BE PRESENT IN THE DATA. These tests were conducted using ESRI ArcMap 10.1. The tests consisted of checking coded values for attributes against a domain of accepted values, checking that alpha-numeric values followed a valid format, and checking that numeric values were greater than zero. For the geometry, the topology was validated; however overlaps and gaps can still be found.</logic>
+		<complete>This national dataset is an aggregation from multiple datasets provided by the BLM Administrative States, please contact the distributor for additional information on provenance, history, accuracy and quality of the data. The completeness of this dataset reflects that of the source datasets.</complete>
+		<lineage>
+			<procstep>
+				<procdesc>Using the implementation guidelines, GIS staff at BLM field and state offices cross-walk and clean up their data to comply with the standardized national dataset. Then, the BLM field and/or state offices submit the data to the National Operations Center (NOC), where it is compiled to produce seamless national datasets.</procdesc>
+				<proccont>
+					<cntinfo>
+						<cntpos>Spatial Data Coordinator</cntpos>
+						<cntaddr>
+							<addrtype>physical address</addrtype>
+							<address>Bldg. 50, Denver Federal Center</address>
+							<city>Denver</city>
+							<state>CO</state>
+							<postal>80225</postal>
+							<country>United States</country>
+						</cntaddr>
+						<cntvoice>(303)236-5445</cntvoice>
+						<cntperp>
+							<cntper>Spatial Data Coordinator</cntper>
+							<cntorg>BLM National Operations Center</cntorg>
+						</cntperp>
+						<cntfax>(303)236-3508</cntfax>
+						<cntemail>scrowe@blm.gov</cntemail>
+					</cntinfo>
+				</proccont>
+				<srcused>H-1283-2 Data Administration and Management Handbook</srcused>
+				<procdate>Unknown</procdate>
+			</procstep>
+			<srcinfo>
+				<srccite>
+					<citeinfo>
+						<title>H-1283-2 Data Administration and Management Handbook</title>
+						<origin>U.S. Department of Interior, Bureau of Land Management (BLM)</origin>
+						<pubdate>20141205</pubdate>
+						<edition>Release 1-1762</edition>
+					</citeinfo>
+				</srccite>
+				<typesrc>online</typesrc>
+				<srctime>
+					<timeinfo>
+						<sngdate>
+							<caldate>20141205</caldate>
+						</sngdate>
+					</timeinfo>
+					<srccurr>publication date</srccurr>
+				</srctime>
+				<srccontr>This official BLM Data Management handbook contains information about how data is administered, managed, and tracked.  This handbook discusses how the BLM operates with regard to data development and design, quality, metadata, and business rules.  The information this resource contains also pertains to geospatial data.</srccontr>
+				<srccitea>H-1283-2 Data Administration and Management Handbook</srccitea>
+			</srcinfo>
+			<procstep>
+				<proccont>
+					<cntinfo>
+						<cntperp>
+							<cntper>Spatial Data Coordinator</cntper>
+							<cntorg>BLM National Operations Center</cntorg>
+						</cntperp>
+						<cntpos>Spatial Data Coordinator</cntpos>
+						<cntaddr>
+							<addrtype>physical address</addrtype>
+							<address>Bldg. 50, Denver Federal Center</address>
+							<city>Denver</city>
+							<state>CO</state>
+							<postal>80225</postal>
+							<country>United States</country>
+						</cntaddr>
+						<cntvoice>(303)236-5445</cntvoice>
+						<cntfax>(303)236-5445</cntfax>
+						<cntemail>scrowe@blm.gov</cntemail>
+					</cntinfo>
+				</proccont>
+				<procdesc>Changes that are made to the Administrative Units data internally are reviewed for correctness before being applied externally. Correctness would include location and point attributes.</procdesc>
+				<procdate>20220310</procdate>
+				<srcused>H-1283-2 Data Administration and Management Handbook</srcused>
+			</procstep>
+			<srcinfo>
+				<srccite>
+					<citeinfo>
+						<onlink>https://gis.blm.gov/EGISDownload/Docs/ADMU_Implementation_Guidelines.pdf</onlink>
+						<origin>United States Department of the Interior Bureau of Land Management</origin>
+						<pubdate>20110606</pubdate>
+						<title>BLM Administrative Units Implementation Guidelines</title>
+					</citeinfo>
+				</srccite>
+				<typesrc>online</typesrc>
+				<srccitea>BLM Administrative Units Implementation Guidelines</srccitea>
+				<srccontr>This document describes the physical design for the national data standard for the geospatial dataset. It is intended as a guideline for implementation. States may
+extend and expand upon this guideline in order to meet their specific needs, provided that when the data is pushed up to the national level, it will meet the minimum
+requirements as set forth in the Data Standard</srccontr>
+				<srctime>
+					<timeinfo>
+						<sngdate>
+							<caldate>20110606</caldate>
+						</sngdate>
+					</timeinfo>
+					<srccurr>publication date</srccurr>
+				</srctime>
+			</srcinfo>
+		</lineage>
+		<attracc>
+			<attraccr>This national dataset is an aggregation from multiple datasets provided by the BLM Administrative States.  Please call the distributor for additional information on provenance, history, accuracy and quality of the data.  The accuracy of attributes in this dataset reflects that of the source datasets. Attribute accuracy was tested by validating attribute coded values against accepted domain values, checking that alpha-numeric values followed a valid format, and checking that numeric values were greater than zero.  The attribute total percent accuracy for this dataset is 64.45%.</attraccr>
+		</attracc>
+		<posacc>
+			<horizpa>
+				<horizpar>This national dataset is an aggregation from multiple datasets provided by the BLM Administrative States, please call the distributor for additional information on provenance, history, accuracy and quality of the data. The positional accuracy across this dataset varies according to the source.</horizpar>
+			</horizpa>
+		</posacc>
+	</dataqual>
+	<spdoinfo>
+		<direct>Vector</direct>
+		<ptvctinf>
+			<sdtsterm>
+				<sdtstype>GT-polygon composed of chains</sdtstype>
+				<ptvctcnt>123</ptvctcnt>
+			</sdtsterm>
+			<sdtsterm>
+				<sdtstype>GT-polygon composed of chains</sdtstype>
+				<ptvctcnt>26</ptvctcnt>
+			</sdtsterm>
+			<sdtsterm>
+				<sdtstype>Entity point</sdtstype>
+				<ptvctcnt>8</ptvctcnt>
+			</sdtsterm>
+			<sdtsterm>
+				<sdtstype>String</sdtstype>
+				<ptvctcnt>0</ptvctcnt>
+			</sdtsterm>
+			<sdtsterm>
+				<sdtstype>Entity point</sdtstype>
+				<ptvctcnt>181</ptvctcnt>
+			</sdtsterm>
+		</ptvctinf>
+	</spdoinfo>
+	<spref>
+		<horizsys>
+			<geograph>
+				<latres>1.1174939588422299e-007</latres>
+				<longres>1.1174939588422299e-007</longres>
+				<geogunit>Decimal degrees</geogunit>
+			</geograph>
+			<geodetic>
+				<horizdn>D North American 1983</horizdn>
+				<ellips>GRS 1980</ellips>
+				<semiaxis>6378137.0</semiaxis>
+				<denflat>298.257222101</denflat>
+			</geodetic>
+			<cordsysn>
+				<geogcsn>GCS_North_American_1983</geogcsn>
+			</cordsysn>
+		</horizsys>
+		<vertdef>
+			<altsys>
+				<altres>0.000100</altres>
+				<altenc>Explicit elevation coordinate included with horizontal coordinates</altenc>
+			</altsys>
+		</vertdef>
+	</spref>
+	<distinfo>
+		<distrib>
+			<cntinfo>
+				<cntpos>NOC Data Management Lead</cntpos>
+				<cntaddr>
+					<addrtype>physical address</addrtype>
+					<address>Bldg 50, Denver Federal Center</address>
+					<city>Denver</city>
+					<state>CO</state>
+					<postal>80225</postal>
+					<country>United States</country>
+				</cntaddr>
+				<cntvoice>(303)236-6806</cntvoice>
+				<cntfax>(303)236-3508</cntfax>
+				<cntemail>jshouldis@blm.gov</cntemail>
+				<cntperp>
+					<cntper>NOC Data Management Lead</cntper>
+					<cntorg>BLM National Operations Center, OC530</cntorg>
+				</cntperp>
+			</cntinfo>
+		</distrib>
+		<distliab>The BLM assumes no responsibility for errors or omissions. No warranty is made by the BLM as to the accuracy, reliability, or completeness of these data for individual use or aggregate use with other data; nor shall the act of distribution to contractors, partners, or beyond, constitute any such warranty for individual or aggregate data use with other data. Although these data have been processed successfully on computers of BLM, no warranty, expressed or implied, is made by BLM regarding the use of these data on any other system, or for general or scientific purposes, nor does the fact of distribution constitute or imply any such warranty. In no event shall the BLM have any liability whatsoever for payment of any consequential, incidental, indirect, special, or tort damages of any kind, including, but not limited to, any loss of profits arising out of the use or reliance on the geographic data or arising out of the delivery, installation, operation, or support by BLM.</distliab>
+		<resdesc>Downloadable Data</resdesc>
+		<availabl>
+			<timeinfo>
+				<sngdate>
+					<caldate>Present</caldate>
+				</sngdate>
+			</timeinfo>
+		</availabl>
+		<stdorder>
+			<digform>
+				<digtinfo>
+					<formname>ESRI file geodatabase (gdb)</formname>
+					<formvern>10.4</formvern>
+				</digtinfo>
+			</digform>
+			<digform>
+				<digtinfo>
+					<formname>BLM Administrative Units </formname>
+					<formspec>http://www.geoplatform.gov/spec/esri-map-rest</formspec>
+					<formcont>This feature data set covers both BLM administrative land areas and office locations. Land areas are depicted with polygons for the smallest administrative unit (field offices). Other levels of administrative units, other, district and state, were derived from these polygons. Overviews were created to improve drawing speed and should not be used for analysis.</formcont>
+				</digtinfo>
+				<digtopt>
+					<onlinopt>
+						<computer>
+							<networka>
+								<networkr>https://gis.blm.gov/arcgis/rest/services/admin_boundaries/BLM_Natl_AdminUnit/MapServer</networkr>
+							</networka>
+						</computer>
+					</onlinopt>
+				</digtopt>
+			</digform>
+		</stdorder>
+	</distinfo>
+	<metainfo>
+		<metd>20190813</metd>
+		<metc>
+			<cntinfo>
+				<cntpos>NOC Data Management Lead</cntpos>
+				<cntaddr>
+					<addrtype>physical address</addrtype>
+					<address>Bldg 50, Denver Federal Center</address>
+					<city>Denver</city>
+					<state>CO</state>
+					<postal>80225</postal>
+					<country>United States</country>
+				</cntaddr>
+				<cntvoice>(303)236-6806</cntvoice>
+				<cntfax>(303)236-3508</cntfax>
+				<cntemail>jshouldis@blm.gov</cntemail>
+				<cntperp>
+					<cntper>NOC Data Management Lead</cntper>
+					<cntorg>BLM National Operations Center, OC530</cntorg>
+				</cntperp>
+			</cntinfo>
+		</metc>
+		<metstdn>FGDC Content Standard for Digital Geospatial Metadata</metstdn>
+		<metstdv>FGDC-STD-001-1998</metstdv>
+		<mettc>local time</mettc>
+		<metrd>20160907</metrd>
+		<metsi>
+			<metsc>Unclassified</metsc>
+		</metsi>
+	</metainfo>
+	<eainfo>
+		<overview>
+			<eaover>See the BLM Administrative Units Data Dictionary contained in Zip Folder</eaover>
+		</overview>
+		<detailed>
+			<enttyp>
+				<enttypl>BLM Administrative Unit Office Points</enttypl>
+				<enttypd>BLM Administrative Unit Office These point features depict the physical locations for active BLM Administrative Unit Offices (at the field office level and above). One physical location may administer more than one administrative unit, and have multiple offices co-located in that location. Therefore, point features may be coincident.</enttypd>
+				<enttypds>BLM Administrative Units (Boundaries) Implementation Guidelines</enttypds>
+			</enttyp>
+			<attr>
+				<attrlabl>ADM_UNIT_CD </attrlabl>
+				<attrdef>Administrative Unit Code: The code that indicates the formal grouping of positions into designated units and the assignment of functions and responsibilities to those units based on the DOI FPPS structure.</attrdef>
+			</attr>
+			<attr>
+				<attrlabl>ADMU_NAME </attrlabl>
+				<attrdef>Administrative Unit Name: The official name by which the organization is known. An organization may include businesses, agencies, or corporations, but not individual persons.</attrdef>
+			</attr>
+			<attr>
+				<attrlabl>BLM_ORG_TYPE </attrlabl>
+				<attrdef>BLM Organization Type: A name that indicates the type of organization that is being described. Design Considerations: The organization type (field office, district office, administrative state, or other) corresponding to the polygon.</attrdef>
+			</attr>
+			<attr>
+				<attrlabl>ADMIN_ST </attrlabl>
+				<attrdef>Administrative State Code: An alphabetic abbreviation that represents each of the 50 states of the United States, the District of Columbia, the outlying areas of the United States, and associated areas. FIPS PUB 5-2</attrdef>
+			</attr>
+			<attr>
+				<attrlabl>Label </attrlabl>
+				<attrdef>Label </attrdef>
+			</attr>
+			<attr>
+				<attrlabl>Label_Full_Name </attrlabl>
+				<attrdef>Label Full Name </attrdef>
+			</attr>
+			<attr>
+				<attrlabl>City_Label  </attrlabl>
+				<attrdef>City Label</attrdef>
+			</attr>
+		</detailed>
+		<detailed>
+			<enttyp>
+				<enttypl>BLM Administrative Unit State Boundary</enttypl>
+				<enttypd>This feature class represents the polygon features for active BLM Administrative Unit Boundaries at the State level.</enttypd>
+				<enttypds>BLM Administrative Units (Boundaries) Implementation Guidelines</enttypds>
+			</enttyp>
+			<attr>
+				<attrlabl>ADMIN_ST </attrlabl>
+				<attrdef>Administrative State Code:  An alphabetic abbreviation that represents each of the 50 states of the United States, the District of Columbia, the outlying areas of the United States, and associated areas. FIPS PUB 5-2</attrdef>
+			</attr>
+		</detailed>
+		<detailed>
+			<enttyp>
+				<enttypl>BLM Administrative Unit District Boundary </enttypl>
+				<enttypd>This feature class represents the polygon features for active BLM Administrative Unit Boundaries at the District level</enttypd>
+				<enttypds>BLM Administrative Units (Boundaries) Implementation Guidelines</enttypds>
+			</enttyp>
+			<attr>
+				<attrlabl>PARENT_CD</attrlabl>
+				<attrdef>Parent Admin Code: The identifier for the administrative unit that has responsibility for other units. Design Considerations: The code that indicates the formal grouping of positions into designated units and the assignment of functions and responsibilities to those units based on the DOI FPPS structure. The BLM administrative unit/office that is a combination of Administrative State Code and Administrative Office Code that fully identifies the geographic area which has jurisdiction over the lands.</attrdef>
+			</attr>
+			<attr>
+				<attrlabl>ADMIN_ST </attrlabl>
+				<attrdef>Administrative State Code: An alphabetic abbreviation that represents each of the 50 states of the United States, the District of Columbia, the outlying areas of the United States, and associated areas. FIPS PUB 5-2</attrdef>
+			</attr>
+		</detailed>
+		<detailed>
+			<enttyp>
+				<enttypl>BLM Administrative Unit Field Boundary </enttypl>
+				<enttypd>This feature class represents the polygon features for active BLM Administrative Unit Boundaries at the Field level.</enttypd>
+				<enttypds>BLM Administrative Units (Boundaries) Implementation Guidelines</enttypds>
+			</enttyp>
+			<attr>
+				<attrlabl>ADM_UNIT_CD </attrlabl>
+				<attrdef>Administrative Unit Code: The code that indicates the formal grouping of positions into designated units and the assignment of functions and responsibilities to those units based on the DOI FPPS structure.</attrdef>
+			</attr>
+			<attr>
+				<attrlabl>ADMU_NAME</attrlabl>
+				<attrdef>Administrative Unit Name: The official name by which the organization is known. An organization may include businesses, agencies, or corporations, but not individual persons.</attrdef>
+			</attr>
+			<attr>
+				<attrlabl>BLM_ORG_TYPE</attrlabl>
+				<attrdef>BLM Organization Type: A name that indicates the type of organization that is being described. Design Considerations: The organization type (field office, district office, administrative state, or other) corresponding to the polygon.</attrdef>
+			</attr>
+			<attr>
+				<attrlabl>APPRV_DT </attrlabl>
+				<attrdef>Approval Date: The date on which the BLM Washington Office or Assistant Secretary, Land and Minerals Management approved or concurred with the change to the organization unit number, name and/or administrative unit boundaries.</attrdef>
+			</attr>
+			<attr>
+				<attrlabl>EFF_DT</attrlabl>
+				<attrdef>Effective Date: The date on which an area of BLM land becomes the responsibility of a BLM administrative unit.</attrdef>
+			</attr>
+			<attr>
+				<attrlabl>ADMU_ST_URL </attrlabl>
+				<attrdef>State Office URL :  The URL of the State Office website. The standard format for a BLM state website is http://www.blm.gov/xx/st/en.html where “xx” is the 2-character state abbreviation.</attrdef>
+			</attr>
+			<attr>
+				<attrlabl>PARENT_CD </attrlabl>
+				<attrdef>Parent Admin Code : The identifier for the administrative unit that has responsibility for other units.  The code that indicates the formal grouping of positions into designated units and the assignment of functions and responsibilities to those units based on the DOI FPPS structure. The BLM administrative unit/office that is a combination of Administrative State Code and Administrative Office Code that fully identifies the geographic area which has jurisdiction over the lands.</attrdef>
+			</attr>
+			<attr>
+				<attrlabl>PARENT_NAME </attrlabl>
+				<attrdef>Parent Name: The official name by which the organization is known. An organization may include businesses, agencies, or corporations, but not individual persons.</attrdef>
+			</attr>
+			<attr>
+				<attrlabl>ADMIN_ST </attrlabl>
+				<attrdef> Administrative State Code :  An alphabetic abbreviation that represents each of the 50 states of the United States, the District of Columbia, the outlying areas of the United States, and associated areas. FIPS PUB 5-2</attrdef>
+			</attr>
+		</detailed>
+		<detailed>
+			<enttyp>
+				<enttypl>BLM Administrative Unit Other Boundary </enttypl>
+				<enttypd>This feature class represents the polygon features for active BLM Administrative Unit Boundaries at the Other level</enttypd>
+				<enttypds>BLM Administrative Units (Boundaries) Implementation Guidelines</enttypds>
+			</enttyp>
+			<attr>
+				<attrlabl>ADM_UNIT_CD </attrlabl>
+				<attrdef>Administrative Unit Code: The code that indicates the formal grouping of positions into designated units and the assignment of functions and responsibilities to those units based on the DOI FPPS structure.</attrdef>
+			</attr>
+			<attr>
+				<attrlabl>ADMU_NAME</attrlabl>
+				<attrdef>Administrative Unit Name: The official name by which the organization is known. An organization may include businesses, agencies, or corporations, but not individual persons.</attrdef>
+			</attr>
+			<attr>
+				<attrlabl>BLM_ORG_TYPE</attrlabl>
+				<attrdef>BLM Organization Type:  A name that indicates the type of organization that is being described. Design Considerations: The organization type (field office, district office, administrative state, or other) corresponding to the polygon.</attrdef>
+			</attr>
+			<attr>
+				<attrlabl>APPRV_DT </attrlabl>
+				<attrdef>Approval Date: The date on which the BLM Washington Office or Assistant Secretary, Land and Minerals Management approved or concurred with the change to the organization unit number, name and/or administrative unit boundaries.</attrdef>
+			</attr>
+			<attr>
+				<attrlabl>EFF_DT</attrlabl>
+				<attrdef>Effective Date: The date on which an area of BLM land becomes the responsibility of a BLM administrative unit.</attrdef>
+			</attr>
+			<attr>
+				<attrlabl>ADMU_ST_URL </attrlabl>
+				<attrdef>State Office URL : The URL of the State Office website. The standard format for a BLM state website is http://www.blm.gov/xx/st/en.html where “xx” is the 2-character state abbreviation.</attrdef>
+			</attr>
+			<attr>
+				<attrlabl>PARENT_CD </attrlabl>
+				<attrdef>Parent Admin Code : The identifier for the administrative unit that has responsibility for other units. Design Considerations: The code that indicates the formal grouping of positions into designated units and the assignment of functions and responsibilities to those units based on the DOI FPPS structure. The BLM administrative unit/office that is a combination of Administrative State Code and Administrative Office Code that fully identifies the geographic area which has jurisdiction over the lands.</attrdef>
+			</attr>
+			<attr>
+				<attrlabl>PARENT_NAME  </attrlabl>
+				<attrdef>Parent Name : The official name by which the organization is known. An organization may include businesses, agencies, or corporations, but not individual persons.</attrdef>
+			</attr>
+			<attr>
+				<attrlabl>ADMIN_ST </attrlabl>
+				<attrdef> Administrative State Code : An alphabetic abbreviation that represents each of the 50 states of the United States, the District of Columbia, the outlying areas of the United States, and associated areas. FIPS PUB 5-2</attrdef>
+			</attr>
+		</detailed>
+	</eainfo>
+	<Binary>
+		<Thumbnail>
+			<Data EsriPropertyType="PictureX">/9j/4AAQSkZJRgABAQEAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
+MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCACFAMgDASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD3+iii
+gAooooAKKKyNe8UaJ4Yihk1rUobNZ2KxCQklyOuAMk4yPzFAGvRXm+j/ABq8NXs95b6ql3ok9u4A
+S9iPzqeh+UHacEZB6ZHJr0VJopHZEkRmTG5QwJGemaAH0UUUAFFFFABRRRQAUUUUAFFFFABRRRQA
+UUUUAFFFFABRRRQAUUUUAFFFFAHO+J/GOl+G4ZYZrgNqRt2lt7RY3keU8hRhQSAWGO3f0qh4J8Ij
+SrWDWtXee88SXcAN1c3LlmiLfM0aDoignGBjOKq+OkHh6Y+MLDU4rXU4olhe1up0SG/iVi3lfORh
+/mYqVOc8YOa1fCvj7QfGEk8Gm3EiXluWEtncp5cyBSASU64ywGfXigDevrG11Oxnsb2BJ7WdCksT
+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
+RRRQAUUUUAFFFFAH/9k=</Data>
+		</Thumbnail>
+	</Binary>
+</metadata>

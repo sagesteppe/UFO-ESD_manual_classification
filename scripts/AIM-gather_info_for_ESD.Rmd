@@ -1,0 +1,190 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+## Data for Verifying ESD's for old UFO plots. 
+
+```{r, echo = F, message = F, warning = F}
+library(tidyverse)
+library(sf)
+```
+
+```{r, echo = F, message = F, warning = F}
+proc_p <- '/media/sagesteppe/ExternalHD/aimDB/data/processed'
+neESDs <- st_read(file.path(proc_p, 'UFO_Plots_wo_ESD_verification.shp'), quiet = T) %>% 
+  select(-PlotKey, PrimaryKey = PrmryKy)
+
+proc_r <- '/media/sagesteppe/ExternalHD/aimDB/data/raw/soil'
+soilPits <- read.csv(file.path(proc_r,'tblSoilPits.txt' )) %>%  # ESDs cannot be in this table..
+  select(PlotKey:Observer, SoilDepthUpper:SoilDepthLower, RockFragments, DepthMeasure, Notes, PrimaryKey)
+
+SoilPitHorizons <- read.csv(file.path(proc_r,'tblSoilPitHorizons.txt' )) %>% 
+  select(SoilKey:Effer, HorizonDepthLower:ESD_pH, PrimaryKey, ESD_FragVolPct2:ESD_FragmentType3)
+  
+focal_pits <- left_join(neESDs, soilPits, by = 'PrimaryKey') %>% 
+  left_join(., SoilPitHorizons, by = 'PrimaryKey') %>% 
+  rename_with(.cols = everything(), ~ str_remove(.x, '.x$')) %>% 
+  mutate_all(na_if,"")  %>% 
+  mutate(PlotID = str_extract(SoilKey, '[A-Z]{2,3}-[0-9]{3}')) %>% 
+  filter(str_detect(Notes, 'Completed|Determined', negate = T)) %>% 
+  select(-ESD_StructQual:-ESD_pH,
+         -ESD_PetrocalcicRubble:-ESD_Gypsic, -ESD_Color:-ESD_Size) %>% 
+  select(-any_of(c('SoilDepthUpper', 'RockFragments', 'DepthMeasure', 
+                   'SoilDepthLower', 'Observer', 'HorizonKey', 'PrimaryKey'))) %>% 
+  select(!ends_with('.y')) 
+  
+to_table <- focal_pits %>% 
+  arrange(SoilKey, HorizonDepthUpper) %>% 
+  mutate(ID = 1:n()) %>% 
+  group_by(SoilKey) %>% 
+  mutate(Plot = cur_group_id()) %>% 
+  ungroup() %>% 
+  
+  rename_with(.cols = everything(), ~ str_remove(.x, 'ESD_'))  %>% 
+  unite(Horizon:HorizonModifier, col = 'Horizon', sep = '-', na.rm = T) %>% 
+  unite(HorizonDepthUpper, HorizonDepthLower, col = 'Depth', sep = "-") %>% 
+  unite(Value, Chroma, col = 'VC', sep = " / ", na.rm = T) %>% 
+  unite(Hue, VC, col = 'Color', sep = " ", na.rm = T) %>% 
+  unite(Texture, PctClay, col = 'TextClay', na.rm = T, sep = " ") %>% 
+  
+  mutate(FragmentType = 'Gr', FragmentType2 = 'St', FragmentType3 = 'Cb') %>% 
+  mutate(across(starts_with('FragVol'), ~ round(as.numeric(.x)))) %>% 
+  mutate(across(starts_with('FragVol'), ~ replace_na(.x, 0))) %>% 
+  unite(FragmentType, FragVolPct, FragmentType2, FragVolPct2, FragmentType3, FragVolPct3,
+        sep = " ", col = 'Rock', na.rm = T) %>% 
+  
+  select(Plot, ID, Horizon, Depth, Rock, TextClay, Effer, Color, Structure, SoilKey, PlotKey, Notes)
+
+table_notes <- to_table %>% 
+  select(Plot, Notes) %>% 
+  distinct() %>% 
+  st_drop_geometry() %>% 
+  write_csv(., file.path(proc_p, 'AIM_plots_need_esd_notes.csv'))
+
+coords <- to_table %>% 
+  st_transform(4269) %>% 
+  st_coordinates(.) %>% 
+  bind_cols(to_table %>% 
+              select(Plot, SoilKey), .) %>% 
+  st_drop_geometry() %>% 
+  distinct(Plot, .keep_all = T) %>% 
+  rename(Longitude = X, Latitude = Y) %>% 
+  write_csv(., file.path(proc_p, 'AIM_plots_need_esd_Coords.csv'))
+
+#to_table %>% 
+#  select(Plot, SoilKey) %>% 
+#  distinct() %>% 
+#  st_write(., file.path(proc_p, 'AIM_plots_need_ESD.shp'), quiet = T)
+
+rm(proc_r, SoilPitHorizons, soilPits, focal_pits, neESDs, table_notes)
+```
+
+
+```{r Print tables for classification, echo = F, message = F, warning = F,e val = F}
+
+collapse_rows_df <- function(df, variable){
+  
+  #' Collapse the values within a grouped dataframe function by: Michael Harper
+  
+  group_var <- enquo(variable)
+  
+  df %>%
+    group_by(!! group_var) %>%
+    mutate(groupRow = 1:n()) %>%
+    ungroup() %>%
+    mutate(!!quo_name(group_var) := ifelse(groupRow == 1, as.character(!! group_var), "")) %>%
+    select(-c(groupRow))
+}
+
+linesep<-function(x,y=character()){ # by bart on SO
+  if(!length(x))
+    return(y)
+  linesep(x[-length(x)], c(rep('',x[length(x)]-1),'\\addlinespace',y))  
+}
+
+lengths <- to_table %>% 
+  group_by(Plot) %>% 
+  mutate(length = n()) %>% 
+  distinct(Plot, .keep_all = T) %>% 
+  pull(length)
+
+to_table %>% 
+  dplyr::select(-Notes, -ID, -SoilKey) %>% 
+  st_drop_geometry() %>% 
+  collapse_rows_df(Plot) %>% 
+  knitr::kable(booktabs = T, longtable = TRUE, linesep = linesep(lengths)) %>% 
+  kableExtra::kable_styling(latex_options = c("hold_position", "repeat_header")) 
+
+rm(linesep, collapse_rows_df, table_notes)
+```
+
+
+```{r Write out information on classified soil series, eval = F}
+
+maybe_soils <- to_table %>% 
+  select(Plot, PlotKey) %>% 
+  distinct(PlotKey, .keep_all = T)  %>% 
+  st_drop_geometry()
+AIM_summaries <- st_read('/media/sagesteppe/ExternalHD/aimDB/data/raw/terrestrialPlots/TerrestrialPlotst.shp')
+p <- file.path('/media/sagesteppe/ExternalHD/aimDB', 'data/raw')
+
+UFO_poly <- st_read(
+  file.path(p, 'blm_co_admu',
+            list.files(file.path(p, 'blm_co_admu'), 
+                       pattern = 'shp$')),
+  quiet = T) %>% 
+  filter(ADMU_NAME == 'UNCOMPAHGRE FIELD OFFICE') %>% 
+  st_transform(4269) %>% 
+  dplyr::select(ADMU_NAME)
+states <- tigris::states() %>% 
+  filter(STUSPS %in% c('CO', 'NM', 'UT'))
+
+AIM_summaries <- AIM_summaries[st_intersection(AIM_summaries, states),] 
+AIM_summaries <- AIM_summaries %>% 
+  st_join(., UFO_poly, join = st_intersects) %>% 
+  mutate(ADMU_NAME = replace_na(ADMU_NAME, 'NOT')) %>% 
+  mutate(UFO = if_else(ADMU_NAME == 'UNCOMPAHGRE FIELD OFFICE', 1, 0), .before = PlotKey) %>% 
+  dplyr::select(-ADMU_NAME) %>% 
+  select(PlotKey, Soil)
+
+mapped <- full_join(maybe_soils, AIM_summaries) %>% 
+  st_drop_geometry() %>% 
+  select(-geometry) 
+
+#write.csv(mapped, 'soils_mapped.csv')
+
+mapped2 <- full_join(maybe_soils, AIM_summaries)[95:109,2:4] %>% 
+  st_as_sf()
+
+mapped3 <- mapped2 %>% 
+  st_coordinates() %>% 
+  bind_cols(mapped2, .) %>% 
+  st_drop_geometry() %>% 
+  rename(Longitude = X, Latitude = Y)
+
+write.csv(mapped3, 'reeds2map.csv')
+
+rm(UFO_poly, maybe_soils, p, coords, states, mapped, mapped2)
+```
+
+
+```{r fix google sheets corrupted column IDs}
+
+plots <- select(to_table, Plot, PlotKey) %>% 
+  st_drop_geometry() %>% 
+  distinct()
+
+classified_ESD <- read.csv(file.path(proc_p, 'retroactively_classifiedESDs.csv')) %>% 
+  na_if("")
+
+brokenKey <- classified_ESD[1:94,c(1,3:5)] %>% 
+  full_join(plots, ., by = 'Plot')
+
+OKkeys <- bind_cols(mapped3[,1], classified_ESD[95:nrow(classified_ESD),])
+identified_plots <- bind_rows(brokenKey, OKkeys) %>% select(-SoilKey, -Plot)
+
+write.csv(identified_plots, file.path(proc_p, 'retroactively_ID_ESDs_wKey.csv'))
+
+rm(brokenKey, plots, classified_ESD, mapped3, to_table)
+```
