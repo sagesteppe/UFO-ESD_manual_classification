@@ -35,7 +35,9 @@ library(kableExtra)
 # Data Analysis
 
 ```{r import aim pts, echo = F}
-aim_pts <- st_read('/media/sagesteppe/ExternalHD/aimDB/data/processed/AIM_plots_need_ESD.shp', quiet = T) %>% 
+file.path(here(),'/data/processed')
+
+aim_pts <- st_read(file.path(here(),'/data/processed/AIM_plots_need_ESD.shp'), quiet = T) %>% 
   st_transform(26912) %>% 
   st_buffer(30) %>% 
   st_transform(4269)
@@ -47,8 +49,6 @@ dem <- rast('/media/sagesteppe/ExternalHD/AIM_Field_rasters/UFO_dem_10_smooth_UT
 slope <- rast('/media/sagesteppe/ExternalHD/AIM_Field_rasters/UFO_slope_deg.tif')
 dem <- project(dem, crs(slope))
 
-
-
 aim_pts_v <- vect(aim_pts)
 physio <- tibble(
   slope = extract(slope, aim_pts_v, method = 'bilinear', fun = mean)[,2],
@@ -56,7 +56,6 @@ physio <- tibble(
   mutate('elev_ft' = dem * 3.28084) %>% 
   mutate('slope_prcnt' = tan(slope*pi/180)*100) %>% 
   dplyr::select(-slope, -dem)
-
 
 # rm(dem, slope)
 ```
@@ -118,11 +117,11 @@ rm(frost_free, aim_pts_v)
 ```{r, echo = F, message = F, warning = F}
 aim_pts <- aim_pts %>% 
   st_drop_geometry() %>% 
-  select(Plot)
+  select(ID)
   
 cbind(aim_pts, physio, annual_climate) %>% 
   mutate(across(where(is.numeric), ~ round(.,0))) %>% 
-  dplyr::select(Plot, elev_ft, slope_prcnt, ppt_inch, tmean_C, tmean_F) %>% 
+  dplyr::select(ID, elev_ft, slope_prcnt, ppt_inch, tmean_C, tmean_F) %>% 
   kableExtra::kable(., "latex", booktabs = TRUE, longtable = TRUE, 
                     caption = "Some AIM site characteristics 2022 UFO",
                     col.names = c('Plot ID', 'Elev. (ft.)', '% Slope', 'Ppt. (in.)', 'Annual Temp. (C)',  
@@ -135,7 +134,7 @@ rm(physio, annual_climate, ff)
 \pagebreak
 
 ```{r, echo = F}
-monthly_precip_t <- data.frame('Plot' = aim_pts$Plot, monthly_precip[,1:12])
+monthly_precip_t <- data.frame('Plot' = aim_pts$ID, monthly_precip[,1:12])
 monthly_precip_t %>% 
   kableExtra::kable(., "latex", booktabs = TRUE, longtable = TRUE, 
                     caption = "Monthly Precipitation 2022 UFO AIM") %>%

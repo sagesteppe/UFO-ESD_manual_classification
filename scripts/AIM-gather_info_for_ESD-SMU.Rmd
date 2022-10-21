@@ -13,8 +13,9 @@ library(here)
 
 ```{r, echo = F, message = F, warning = F}
 
-proc_p <- file.path(here(),'data/processed')
-neESDs <- st_read(file.path(proc_p, 'plotsToVerify.shp'), quiet = T)
+proc_p <- file.path('/media/sagesteppe/ExternalHD/UFO_ESD_manual_classification', 'data/processed')
+neESDs <- st_read(file.path(proc_p, 'plotsToTranscribeEsd.shp'), quiet = T) %>% 
+  rename(PrimaryKey = PrmryKy)
 
 proc_r <- '/media/sagesteppe/ExternalHD/aimDB/data/raw/soil'
 soilPits <- read.csv(file.path(proc_r,'tblSoilPits.txt' )) %>%  # ESDs cannot be in this table..
@@ -37,6 +38,7 @@ focal_pits <- left_join(neESDs, soilPits, by = 'PrimaryKey') %>%
 to_table <- focal_pits %>% 
   arrange(SoilKey, HorizonDepthUpper) %>% 
   group_by(SoilKey) %>% 
+  mutate(ID = cur_group_id()) %>% 
   ungroup() %>% 
   
   rename_with(.cols = everything(), ~ str_remove(.x, 'ESD_'))  %>% 
@@ -59,7 +61,7 @@ table_notes <- to_table %>%
   distinct() %>% 
   st_drop_geometry() %>% 
   arrange(ID) %>% 
-  write_csv(., file.path(proc_p, 'AIM_plots_need_esd_notes.csv'))
+  write_csv(., file.path(proc_p, 'AIM_plots_need_esd_notes-SMU.csv'))
 
 coords <- to_table %>% 
   st_transform(4269) %>% 
@@ -69,13 +71,13 @@ coords <- to_table %>%
   st_drop_geometry() %>% 
   distinct(ID, .keep_all = T) %>% 
   rename(Longitude = X, Latitude = Y) %>% 
-  arrange(ID) %>% 
-  write.csv(., file.path(proc_p, 'AIM_plots_need_esd_Coords.csv'), row.names = F)
+  arrange(ID) #%>% 
+  write.csv(., file.path(proc_p, 'AIM_plots_need_esd_Coords-SMU.csv'), row.names = F)
 
-#to_table %>% 
-#  select(ID, SoilKey) %>% 
-#  distinct() %>% 
-#  st_write(., file.path(proc_p, 'AIM_plots_need_ESD.shp'), quiet = T)
+to_table %>% 
+  select(ID, SoilKey) %>% 
+  distinct() %>% 
+  st_write(., file.path(proc_p, 'AIM_plots_need_ESD-SMU.shp'), quiet = T, append = F)
 
 rm(proc_r, SoilPitHorizons, soilPits, focal_pits, neESDs, table_notes)
 ```
@@ -144,7 +146,12 @@ mapped <- left_join(maybe_soils, AIM_summaries, by = 'PlotKey') %>%
   drop_na(Soil) %>% 
   arrange(ID)
 
-write.csv(mapped, file.path(proc_p, 'soils_mapped.csv'), row.names = F)
+write.csv(mapped, file.path(proc_p, 'soils_mapped-SMU.csv'), row.names = F)
 
 rm(maybe_soils, p, coords, states, mapped)
 ```
+
+```{r}
+
+```
+

@@ -4,9 +4,9 @@ library(here)
 library(sf)
 library(tidyverse)
 
-# set_here('/media/sagesteppe/ExternalHD/UFO_ESD_manual_classification')
+i_am('/media/sagesteppe/ExternalHD/UFO_ESD_manual_classification')
 here()
-p <- file.path(here(), 'data/raw')
+p <- file.path('/media/sagesteppe/ExternalHD/UFO_ESD_manual_classification', 'data/raw')
 vector_data <- list.files(p, recursive = T, pattern = 'shp$')
 
 administrative_boundaries <- st_read(
@@ -60,21 +60,27 @@ plots2verify <- plots2consider %>%
   arrange(Distance) %>% 
   slice_head(n = 250) 
 
+plotsTranscribedSMU <- plots2consider %>% 
+  arrange(Distance) %>% 
+  slice_tail(n = 250)
+
 ggplot() + # ensure the process worked as so: 
   geom_sf(data = fo_buffer, fill = NA, lwd = 2, color = 'black') +
   geom_sf(data = focal_FO,  fill = 'black') +
   geom_sf(data = plots2consider, color = 'red') +
   geom_sf(data = plots2verify, color = 'cyan')
   
-p <- file.path(here(), 'data/processed')
+p <- file.path('/media/sagesteppe/ExternalHD/UFO_ESD_manual_classification', 'data/processed')
 
 plots2verify$Distance <- as.numeric(plots2verify$Distance)
 plots2verify <- plots2verify %>% 
-  st_drop_geometry() %>% 
   dplyr::select(-ProjectName, -EcologicalSiteId, -GlobalID, -Distance) %>% 
   mutate(ID = 1:n())
 
-write.csv(plots2verify, file.path(p, 'plotsToVerify.csv'), row.names = F)
+st_write(plots2verify, file.path(p, 'plotsToVerify.shp'), row.names = F, 
+         quiet = T)
+st_write(plotsTranscribedSMU, file.path(p, 'plotsToTranscribeEsd.shp'), row.names = F, 
+         quiet = T)
 
 rm(mlras, AIM_summaries, plots2consider, fo_buffer, focal_FO,
    p2terradat, p , plots2verify)
