@@ -71,7 +71,7 @@ coords <- to_table %>%
   st_drop_geometry() %>% 
   distinct(ID, .keep_all = T) %>% 
   rename(Longitude = X, Latitude = Y) %>% 
-  arrange(ID) #%>% 
+  arrange(ID) %>% 
   write.csv(., file.path(proc_p, 'AIM_plots_need_esd_Coords-SMU.csv'), row.names = F)
 
 to_table %>% 
